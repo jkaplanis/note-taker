@@ -10,6 +10,13 @@ module.exports = app => {
     res.sendFile(path.join(__dirname, "../public/notes.html"));
   });
 
+  app.get("/assets/css/styles.css", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/assets/css/styles.css"));
+  });
+
+  app.get("/assets/js/index.js", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/assets/js/index.js"));
+  });
   // If no matching route is found default to home. The "*" is a special
   // character used to match anything. Its important to put this route last!
   // once Express finds a matching route, it stops looking for matches. If
