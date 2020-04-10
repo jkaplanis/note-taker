@@ -11,24 +11,24 @@ let activeNote = {};
 const getNotes = () => {
   return $.ajax({
     url: "/api/notes",
-    method: "GET",
+    method: "GET"
   });
 };
 
 // A function for saving a note to the db
-const saveNote = (note) => {
+const saveNote = note => {
   return $.ajax({
     url: "/api/notes",
     data: note,
-    method: "POST",
+    method: "POST"
   });
 };
 
 // A function for deleting a note from the db
-const deleteNote = (id) => {
+const deleteNote = id => {
   return $.ajax({
     url: "api/notes/" + id,
-    method: "DELETE",
+    method: "DELETE"
   });
 };
 
@@ -53,7 +53,7 @@ const renderActiveNote = () => {
 const handleNoteSave = function () {
   const newNote = {
     title: $noteTitle.val(),
-    text: $noteText.val(),
+    text: $noteText.val()
   };
 
   saveNote(newNote).then(() => {
@@ -102,7 +102,7 @@ const handleRenderSaveBtn = function () {
 };
 
 // Render's the list of note titles
-const renderNoteList = (notes) => {
+const renderNoteList = notes => {
   $noteList.empty();
 
   const noteListItems = [];
@@ -127,7 +127,7 @@ const renderNoteList = (notes) => {
     noteListItems.push(create$li("No saved Notes", false));
   }
 
-  notes.forEach((note) => {
+  notes.forEach(note => {
     const $li = create$li(note.title).data(note);
     noteListItems.push($li);
   });
