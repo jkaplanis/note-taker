@@ -30,4 +30,21 @@ module.exports = app => {
       }
     );
   });
+
+  app.delete("/api/notes/:id", function (req, res) {
+    console.log(`Deleting note: ${req.params.id}`);
+
+    const noteIndex = notes.findIndex(
+      note => note.id === parseInt(req.params.id)
+    );
+    if (noteIndex === -1) {
+      // did not find matching note
+      // send error response code
+      return res.sendStatus(404);
+    }
+    // removes the note if its found
+    notes.splice(noteIndex, 1);
+    // send ok response code
+    return res.sendStatus(200);
+  });
 };
