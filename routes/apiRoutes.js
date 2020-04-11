@@ -35,8 +35,6 @@ module.exports = app => {
 
   // handle deleting specific notes
   app.delete("/api/notes/:id", function (req, res) {
-    console.log(`Deleting note: ${req.params.id}`);
-
     const noteIndex = notes.findIndex(
       note => note.id === parseInt(req.params.id)
     );
