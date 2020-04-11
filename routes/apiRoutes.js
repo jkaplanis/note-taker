@@ -3,10 +3,12 @@ const fs = require("fs");
 const path = require("path");
 
 module.exports = app => {
+  // Provides stored notes
   app.get("/api/notes", (req, res) => {
     res.json(notes);
   });
 
+  // handle adding new notes
   app.post("/api/notes", (req, res) => {
     const newNote = req.body;
     if (notes.length === 0) {
@@ -25,12 +27,13 @@ module.exports = app => {
           res.writeHead(500, { "Content-Type": "text/plain" });
           return res.end("Oh no! Something isn't right on the server.");
         }
-        console.log("Saved!");
+        console.log("Note saved!");
         res.json(req.body);
       }
     );
   });
 
+  // handle deleting specific notes
   app.delete("/api/notes/:id", function (req, res) {
     console.log(`Deleting note: ${req.params.id}`);
 
